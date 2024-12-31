@@ -32,9 +32,9 @@ Future<void> init() async {
   //* External
 
   // Box<PostModel> sharedPreferences = postLocalDataSource.postsBox;
-  sl.registerLazySingleton<Box<PostModel>>(() => Hive.box<PostModel>('posts_box'));
+  sl.registerLazySingleton<Box<PostModel>>(() => postLocalDataSource.postsBox);
   sl.registerLazySingleton(() => Dio());
-  sl.registerLazySingleton(() => InternetConnectionChecker());
+  sl.registerLazySingleton(() => InternetConnectionChecker.instance);
 
   //* repository
   sl.registerLazySingleton<PostRepository>(
